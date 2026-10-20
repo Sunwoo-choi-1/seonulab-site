@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="ko" style="color-scheme: light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI로 다했서누 | 서누랩</title>
+  <meta name="description" content="사람은 기획만, 나머지는 AI가. 9년차 마케터 서누의 AI 업무 자동화 강의와 스킬 나눔." />
+  <meta name="author" content="seonulab" />
+  <!-- 도메인 연결 후 아래 og:url / og:image 주소를 새 도메인으로 바꿔 주세요 -->
+  <meta property="og:title" content="AI로 다했서누 | 서누랩" />
+  <meta property="og:description" content="사람은 기획만, 나머지는 AI가. 9년차 마케터 서누의 AI 업무 자동화 강의와 스킬 나눔." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://seonulab.vercel.app/" />
+  <meta property="og:image" content="https://seonulab.vercel.app/assets/banner-lockup.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://seonulab.vercel.app/assets/banner-lockup.png" />
+  <link rel="icon" href="/assets/profile.jpg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <style>
+    :root {
+      --cream: #FFF4E0;
+      --ink: #1E1108;
+      --tangerine: #FF6A00;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+        system-ui, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+      word-break: keep-all;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.5;
+    }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; }
+    button { font: inherit; color: inherit; background: none; border: none; }
+
+    /* 헤더 */
+    .site-header {
+      position: sticky; top: 0; z-index: 40;
+      background: rgba(255, 244, 224, 0.9);
+      backdrop-filter: blur(8px);
+      border-bottom: 2px solid rgba(30, 17, 8, 0.1);
+    }
+    .site-header .wrap {
+      max-width: 64rem; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.75rem 1.25rem;
+    }
+    .logo { display: flex; align-items: center; gap: 0.625rem; text-decoration: none; }
+    .logo svg { width: 2rem; height: 2rem; }
+    .logo span { font-size: 1.125rem; font-weight: 800; letter-spacing: -0.01em; }
+    .site-nav { display: none; align-items: center; gap: 1.75rem; font-size: 0.875rem; font-weight: 700; }
+    @media (min-width: 640px) { .site-nav { display: flex; } }
+
+    /* 공통 */
+    section { padding: 4rem 1.25rem; }
+    .inner { max-width: 64rem; margin: 0 auto; }
+    .section-title {
+      display: flex; align-items: center; gap: 0.75rem;
+      font-size: 1.875rem; font-weight: 800; letter-spacing: -0.02em;
+    }
+    .section-title svg { width: 2.25rem; height: 2.25rem; flex-shrink: 0; }
+    .section-sub { margin-top: 1rem; font-size: 1rem; color: rgba(30, 17, 8, 0.7); }
+    @media (min-width: 640px) {
+      .section-title { font-size: 2.25rem; }
+      .section-sub { font-size: 1.125rem; }
+    }
+
+    /* 형광펜 하이라이트: 글자 뒤 감귤 블록, 각진 모서리, 글자 높이의 60~70% */
+    .hl-pen {
+      background-image: linear-gradient(var(--tangerine), var(--tangerine));
+      background-repeat: no-repeat;
+      background-size: 100% 62%;
+      background-position: 0 84%;
+      padding: 0 0.1em;
+    }
+
+    /* 버튼 가먼트 */
+    .btn-tang {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 1.75rem; font-size: 1rem; font-weight: 700;
+      text-decoration: none;
+      background: var(--tangerine); color: #fff; border-radius: 999px;
+      box-shadow: 0 4px 0 var(--ink);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    .btn-tang:hover { transform: translateY(3px); box-shadow: 0 1px 0 var(--ink); }
+    .btn-ink-outline {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      padding: 0.875rem 1.75rem; font-size: 1rem; font-weight: 700;
+      text-decoration: none;
+      border: 2px solid var(--ink); border-radius: 14px; background: transparent;
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .btn-ink-outline:hover { background: var(--ink); color: var(--cream); }
+    .btn-ink {
+      display: inline-flex; width: fit-content; align-items: center;
+      margin-top: 1.5rem; padding: 0.75rem 1.5rem;
+      font-size: 0.875rem; font-weight: 700; text-decoration: none;
+      background: var(--ink); color: var(--cream); border-radius: 12px;
+      transition: background 0.2s ease, transform 0.15s ease;
+    }
+    .btn-ink:hover { background: #3a2414; transform: translateY(-1px); }
+    .link-draw {
+      text-decoration: none;
+      background-image: linear-gradient(var(--tangerine), var(--tangerine));
+      background-repeat: no-repeat;
+      background-size: 0% 2.5px;
+      background-position: 0 100%;
+      padding-bottom: 3px;
+      transition: background-size 0.25s ease;
+    }
+    .link-draw:hover { background-size: 100% 2.5px; }
+
+    /* 히어로 */
+    .hero { padding: 3.5rem 1.25rem 5rem; }
+    @media (min-width: 640px) { .hero { padding-top: 5rem; } }
+    .hero .inner { max-width: 56rem; display: flex; flex-direction: column; align-items: center; text-align: center; }
+    .lockup { width: min(820px, 94vw); }
+    .hero h1 {
+      margin-top: 2.5rem;
+      font-size: 1.875rem; font-weight: 800; line-height: 1.375; letter-spacing: -0.02em;
+    }
+    .hero .lede {
+      margin-top: 1.25rem; max-width: 36rem;
+      font-size: 1rem; line-height: 1.625; color: rgba(30, 17, 8, 0.8);
+    }
+    @media (min-width: 640px) {
+      .hero h1 { font-size: 3rem; }
+      .hero .lede { font-size: 1.125rem; }
+      .br-mobile { display: none; }
+    }
+    .cta-row { margin-top: 2.25rem; display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; }
+    .hero .arrow { margin-top: 3.5rem; width: 2rem; height: 2.75rem; color: rgba(30, 17, 8, 0.6); }
+
+    /* 소개 */
+    .about-grid { display: grid; align-items: center; gap: 3rem; }
+    @media (min-width: 640px) { .about-grid { grid-template-columns: auto 1fr; gap: 4rem; } }
+    .about-photo { position: relative; margin: 0 auto; }
+    .about-photo .profile {
+      width: 13rem; height: 13rem; object-fit: cover;
+      border-radius: 999px; border: 4px solid var(--ink);
+      transform: rotate(-2deg);
+    }
+    @media (min-width: 640px) { .about-photo .profile { width: 16rem; height: 16rem; } }
+    .about-photo .doodle-sparkle { position: absolute; right: -1.5rem; top: -1.25rem; width: 2.5rem; height: 2.5rem; }
+    .about-photo .doodle-laptop { position: absolute; bottom: -1.5rem; left: -2rem; width: 4rem; height: 3.5rem; }
+    .about-copy p { margin-top: 1.5rem; font-size: 1rem; line-height: 1.625; color: rgba(30, 17, 8, 0.85); }
+    @media (min-width: 640px) { .about-copy p { font-size: 1.125rem; } }
+    .chips { margin-top: 1.75rem; display: flex; flex-wrap: wrap; gap: 0.75rem; list-style: none; }
+    .chips li {
+      border: 2px solid var(--ink); background: #fff; border-radius: 999px;
+      padding: 0.375rem 1rem; font-size: 0.875rem; font-weight: 700;
+    }
+
+    /* 강의 */
+    .lecture-list { margin-top: 2.5rem; display: flex; flex-direction: column; gap: 1.5rem; }
+    .lecture-card {
+      display: flex; flex-direction: column; gap: 1.25rem;
+      background: #fff; border: 2px solid var(--ink); border-radius: 24px;
+      padding: 1.75rem;
+    }
+    @media (min-width: 640px) {
+      .lecture-card { flex-direction: row; align-items: center; gap: 2rem; padding: 2.25rem; }
+    }
+    .lecture-card .badge-row { display: flex; align-items: center; gap: 1.25rem; }
+    .lecture-num {
+      display: flex; width: 3.5rem; height: 3.5rem; flex-shrink: 0;
+      align-items: center; justify-content: center;
+      border-radius: 999px; background: var(--tangerine);
+      color: #fff; font-size: 1.25rem; font-weight: 800;
+    }
+    .lecture-card .doodle { width: 3rem; height: 3rem; flex-shrink: 0; }
+    .lecture-body { flex: 1; }
+    .lecture-body h3 { font-size: 1.25rem; font-weight: 800; }
+    @media (min-width: 640px) { .lecture-body h3 { font-size: 1.5rem; } }
+    .lecture-body p { margin-top: 0.5rem; line-height: 1.625; color: rgba(30, 17, 8, 0.75); }
+    .lecture-links {
+      display: flex; flex-shrink: 0; flex-direction: column; align-items: flex-start;
+      gap: 0.75rem; font-size: 0.875rem; font-weight: 700;
+    }
+    @media (min-width: 640px) { .lecture-links { align-items: flex-end; } }
+    .lecture-card.soon {
+      background: rgba(255, 255, 255, 0.5);
+      border-style: dashed; border-color: rgba(30, 17, 8, 0.5);
+    }
+    .lecture-card.soon .lecture-num {
+      background: transparent; border: 2px solid rgba(30, 17, 8, 0.4);
+      color: rgba(30, 17, 8, 0.5);
+    }
+    .lecture-card.soon .doodle { color: rgba(30, 17, 8, 0.6); }
+    .lecture-card.soon h3 { color: rgba(30, 17, 8, 0.7); display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; }
+    .lecture-card.soon p { color: rgba(30, 17, 8, 0.6); }
+    .badge-soon {
+      border-radius: 999px; background: var(--ink); color: var(--cream);
+      padding: 0.25rem 0.75rem; font-size: 0.75rem; font-weight: 700;
+    }
+
+    /* 스킬 */
+    .skill-grid { margin-top: 2.5rem; display: grid; gap: 1.5rem; }
+    @media (min-width: 640px) { .skill-grid { grid-template-columns: 1fr 1fr; } }
+    .skill-card {
+      display: flex; flex-direction: column;
+      background: #fff; border: 2px solid var(--ink); border-radius: 24px;
+      padding: 2rem;
+    }
+    .skill-card .doodle { width: 3.5rem; height: 3.5rem; }
+    .skill-card h3 { margin-top: 1.25rem; font-size: 1.25rem; font-weight: 800; }
+    .skill-card .code { margin-top: 0.25rem; font-size: 0.875rem; font-weight: 700; color: rgba(30, 17, 8, 0.5); }
+    .skill-card .desc { margin-top: 0.75rem; flex: 1; line-height: 1.625; color: rgba(30, 17, 8, 0.75); }
+
+    /* 카드 리프트 */
+    .card-lift { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+    .card-lift:hover {
+      transform: translateY(-4px) rotate(-0.3deg);
+      box-shadow: 0 10px 0 -3px rgba(30, 17, 8, 0.15);
+    }
+
+    /* 연락처: 흑감귤 브라운 밴드 */
+    .contact { background: var(--ink); color: var(--cream); padding: 5rem 1.25rem; }
+    @media (min-width: 640px) { .contact { padding: 6rem 1.25rem; } }
+    .contact .inner { max-width: 56rem; text-align: center; }
+    .contact .section-title { justify-content: center; }
+    .contact .section-sub { color: rgba(255, 244, 224, 0.75); }
+    .contact-grid { margin-top: 2.5rem; display: grid; gap: 1rem; }
+    @media (min-width: 640px) { .contact-grid { grid-template-columns: 1fr 1fr; } }
+    .contact-tile {
+      display: flex; align-items: center; gap: 1rem;
+      border: 2px solid rgba(255, 244, 224, 0.7); border-radius: 16px;
+      padding: 1.25rem 1.5rem; text-align: left; text-decoration: none;
+      cursor: pointer; width: 100%;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+    .contact-tile:hover { background: var(--cream); color: var(--ink); transform: translateY(-2px); }
+    .contact-tile svg { width: 2.5rem; height: 2.5rem; flex-shrink: 0; }
+    .contact-tile .kind { display: block; font-size: 0.875rem; font-weight: 700; opacity: 0.7; }
+    .contact-tile .value { display: block; font-weight: 800; }
+
+    /* 푸터 */
+    .site-footer { padding: 3rem 1.25rem; text-align: center; }
+    .site-footer .outro { font-size: 1.125rem; font-weight: 800; }
+    .site-footer .copyright { margin-top: 0.5rem; font-size: 0.875rem; color: rgba(30, 17, 8, 0.55); }
+
+    /* 모션: 마운트 시 올라오는 등장 (뷰포트 게이트 없음) */
+    @keyframes sn-rise {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: none; }
+    }
+    .rise { animation: sn-rise 0.7s ease-out both; }
+    .rise-1 { animation-delay: 0.1s; }
+    .rise-2 { animation-delay: 0.2s; }
+    .rise-3 { animation-delay: 0.3s; }
+    @keyframes sn-bob {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-7px); }
+    }
+    .bob { animation: sn-bob 3s ease-in-out infinite; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .rise, .bob { animation: none; }
+      .card-lift, .card-lift:hover, .contact-tile:hover, .btn-tang:hover, .btn-ink:hover {
+        transform: none; transition: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="#top" class="logo">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M24 3.8c11.2-.5 20.1 8.9 20.3 20C44.5 35 35.6 44.1 24.2 44.4 12.8 44.7 3.9 35.4 3.7 24.3 3.5 13.2 12.9 4.3 24 3.8Z" fill="#1E1108"/>
+          <path d="M15 25.2c2.4 2.5 4.4 5.2 6 8 3.1-6.6 7.2-12.2 12.3-17.1" fill="none" stroke="#FF6A00" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>AI로 다했서누</span>
+      </a>
+      <nav class="site-nav">
+        <a href="#about" class="link-draw">소개</a>
+        <a href="#lectures" class="link-draw">강의</a>
+        <a href="#skills" class="link-draw">스킬</a>
+        <a href="#contact" class="link-draw">연락처</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- 히어로: 유튜브 배너 락업 그대로 재사용 -->
+    <section class="hero">
+      <div class="inner">
+        <img class="lockup rise" src="/assets/banner-lockup.png" alt="AI로 다했서누, 9년차 마케터의 AI와 일하는 법" width="1260" height="330" />
+        <h1 class="rise rise-1">사람은 기획만,<br class="br-mobile" /> 나머지는 <span class="hl-pen">AI가</span></h1>
+        <p class="lede rise rise-2">
+          코딩 몰라도 되는 AI 업무 자동화.<br />
+          제가 삽질한 만큼만 정직하게 보여드립니다.
+        </p>
+        <div class="cta-row rise rise-3">
+          <a href="#lectures" class="btn-tang">강의 보러 가기</a>
+          <a href="#contact" class="btn-ink-outline">연락하기</a>
+        </div>
+        <svg class="arrow bob" viewBox="0 0 32 44" fill="none" aria-hidden="true">
+          <path d="M16.5 4c-.8 7.2-.7 14.3.1 25.9M9 24.5c2.8 3.4 5 6.6 7.4 11.3 1.8-4.8 3.8-8.2 6.6-11.8" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 소개 -->
+    <section id="about">
+      <div class="inner about-grid">
+        <div class="about-photo">
+          <img class="profile" src="/assets/profile.jpg" alt="서누 프로필 사진" width="800" height="800" />
+          <svg class="doodle-sparkle" viewBox="0 0 40 40" fill="none" aria-hidden="true" style="color: var(--ink)">
+            <path d="M20 6.5c.4 3.1.6 4.7 1.4 6.2.9 1.5 2.2 2.4 4.9 3.9-2.8 1.3-4.1 2.2-5 3.8-.8 1.5-1 3.1-1.3 6.1-.5-3-.8-4.6-1.7-6.1-.9-1.5-2.1-2.4-4.7-3.8 2.7-1.4 3.9-2.3 4.8-3.9.8-1.5 1.1-3.1 1.6-6.2Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M32.5 25.3c.2 1.6.4 2.5.8 3.3.5.8 1.1 1.3 2.5 2.1-1.5.7-2.1 1.2-2.6 2-.4.8-.6 1.6-.8 3.2-.3-1.6-.5-2.4-1-3.2-.4-.8-1.1-1.3-2.4-2 1.4-.8 2-1.3 2.5-2.1.4-.8.7-1.7 1-3.3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          <svg class="doodle-laptop" viewBox="0 0 64 52" fill="none" aria-hidden="true" style="color: var(--ink)">
+            <path d="M13.5 9.8c.2-2.1 1.7-3.4 3.8-3.5 9.5-.5 19-.4 28.6.2 2 .1 3.4 1.5 3.5 3.5.3 7 .2 13.9-.2 20.9-14-.6-24.6-.5-35.9.3-.4-7.2-.3-14.3.2-21.4Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+            <path d="M13.2 31.4 7.6 40.9c16.4 1.6 32.5 1.7 48.7.2l-6.9-9.9" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            <circle cx="28" cy="17.5" r="1.6" fill="currentColor"/>
+            <circle cx="37" cy="17.5" r="1.6" fill="currentColor"/>
+            <path d="M28.5 23.2c2.3 1.6 4.4 1.6 6.8.1" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+            <path d="M54 7.5l3.4-4M57.5 13l4.6-1.6M58 20h4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+          </svg>
+        </div>
+        <div class="about-copy">
+          <h2 class="section-title">
+            <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+              <path d="M24 4.6c10.7-.4 19 8.5 19.2 19 .2 10.6-8.2 19.5-19 19.8C13.3 43.7 4.7 34.9 4.5 24.1 4.3 13.5 13.2 5 24 4.6Z" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+              <path d="M15.3 25c2.3 2.4 4.2 5 5.7 7.7 3-6.3 6.9-11.6 11.8-16.3" stroke="#FF6A00" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            만든 사람, 서누
+          </h2>
+          <p>
+            마케팅 9년차입니다. 개발자는 아닙니다.
+            <br />
+            상세페이지도, 광고도, 블로그도 혼자 해야 하는데 손이 두 개뿐이라 AI에게
+            일을 떠넘기기 시작했습니다.
+            <br />
+            8년 넘게 손으로 하던 일이라, AI 결과물이 실무에서 쓸 만한지 아닌지는 압니다.
+          </p>
+          <ul class="chips">
+            <li>마케터 9년차</li>
+            <li>브랜드 2곳 실무</li>
+            <li>상품 3,000개 운영</li>
+            <li>사람은 저 하나</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- 강의 -->
+    <section id="lectures">
+      <div class="inner">
+        <h2 class="section-title">
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M24 4.6c10.7-.4 19 8.5 19.2 19 .2 10.6-8.2 19.5-19 19.8C13.3 43.7 4.7 34.9 4.5 24.1 4.3 13.5 13.2 5 24 4.6Z" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M15.3 25c2.3 2.4 4.2 5 5.7 7.7 3-6.3 6.9-11.6 11.8-16.3" stroke="#FF6A00" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          강의 자료
+        </h2>
+        <p class="section-sub">수업에서 쓴 자료는 전부 노션에 정리되어 있습니다. 스킬 파일과 함께 받아 가세요.</p>
+        <div class="lecture-list">
+
+          <article class="lecture-card card-lift">
+            <div class="badge-row">
+              <span class="lecture-num">01</span>
+              <svg class="doodle" viewBox="0 0 56 56" fill="none" aria-hidden="true" style="color: var(--ink)">
+                <path d="M18.5 8.3c7.9-.7 15.6-.6 23.4.2 1.8.2 3 1.4 3.1 3.2.5 8.3.4 16.4-.3 24.6-.1 1.7-1.4 2.9-3.1 3-7.7.5-15.3.4-23-.2-1.8-.1-3-1.4-3.1-3.2-.5-8.1-.4-16.1.1-24.3.1-1.8 1.2-3.1 2.9-3.3Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+                <path d="M12.5 15.5c-1.6.4-2.6 1.5-2.7 3.2-.5 8.1-.4 16 .2 24.1.1 1.8 1.4 3 3.2 3.2 7.5.6 14.9.7 22.4.2" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+                <path d="M22 17.8c5.2-.3 10.3-.2 15.5.2M22 24c4.1-.2 8.1-.1 12.2.2M22 30.2c5 0 9.9.1 14.9.3" stroke="#FF6A00" stroke-width="2.6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="lecture-body">
+              <h3>카드뉴스 자동화</h3>
+              <p>스킬 하나, 예약 하나. 매일 아침 9시, 카드뉴스가 폴더에 이미 와 있습니다. 클로드 코워크에 예약을 걸어두는 법부터 차근차근 다룹니다.</p>
+            </div>
+            <div class="lecture-links">
+              <a href="https://www.notion.so/3dc5c835dac680089fd1c451c145759a" target="_blank" rel="noreferrer" class="link-draw">강의 자료 보기</a>
+              <a href="https://github.com/Sunwoo-choi-1/aisunwoo_cardnews/releases/latest/download/news-carousel-source.zip" class="link-draw">스킬 ZIP 받기</a>
+            </div>
+          </article>
+
+          <article class="lecture-card card-lift">
+            <div class="badge-row">
+              <span class="lecture-num">02</span>
+              <svg class="doodle" viewBox="0 0 56 56" fill="none" aria-hidden="true" style="color: var(--ink)">
+                <path d="M7.5 25.3c13.7-6.6 27.5-12 41.8-16.5-2.6 13.2-6.2 25.6-11 37.8-3.5-5-7-9.4-11.2-13.6-6.7-2.9-13-5.1-19.6-7.7Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+                <path d="M27 33.2 48.6 9.5M27.2 33.4c-.8 4-1.2 7.5-1.3 11.3 2.1-2.7 4-5 6.4-7.3" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="lecture-body">
+              <h3>트렌드 뉴스레터 자동화</h3>
+              <p>컴퓨터를 꺼도 매일 아침 Gmail로 도착하는 나만의 트렌드 뉴스레터. 디자인 3종 중 하나를 골라, 내 직업에 맞는 소식만 받아봅니다.</p>
+            </div>
+            <div class="lecture-links">
+              <a href="https://www.notion.so/3f15c835dac68173acc7cf3e72590af5" target="_blank" rel="noreferrer" class="link-draw">강의 자료 보기</a>
+              <a href="https://github.com/Sunwoo-choi-1/MY-trend-newsletter/releases/latest/download/trend-newsletter.zip" class="link-draw">스킬 ZIP 받기</a>
+            </div>
+          </article>
+
+          <article class="lecture-card soon">
+            <div class="badge-row">
+              <span class="lecture-num">03</span>
+              <svg class="doodle" viewBox="0 0 56 56" fill="none" aria-hidden="true">
+                <path d="M37.8 9.2c2.1-2.3 5.3-2.4 7.6-.4 2.3 2 2.6 5.2.6 7.5-7.5 8.8-15.3 17-23.8 24.9-3 .9-6 1.6-9.4 2.2.5-3.3 1.1-6.4 1.9-9.5C22 25.6 29.7 17.3 37.8 9.2Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+                <path d="M34.5 12.8c2.6 1.9 4.9 4 7.3 6.6M14.2 34.6c2.4 1.8 4.5 3.7 6.6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+                <path d="M8 49.5c3.5-.9 6.9-.9 10.6-.2" stroke="#FF6A00" stroke-width="2.8" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="lecture-body">
+              <h3>클로드로 디자인하는 법 <span class="badge-soon">준비 중</span></h3>
+              <p>글만 쓰던 AI에게 디자인까지 시키는 법. 다음 강의로 준비하고 있습니다.</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 스킬 -->
+    <section id="skills">
+      <div class="inner">
+        <h2 class="section-title">
+          <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+            <path d="M24 4.6c10.7-.4 19 8.5 19.2 19 .2 10.6-8.2 19.5-19 19.8C13.3 43.7 4.7 34.9 4.5 24.1 4.3 13.5 13.2 5 24 4.6Z" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"/>
+            <path d="M15.3 25c2.3 2.4 4.2 5 5.7 7.7 3-6.3 6.9-11.6 11.8-16.3" stroke="#FF6A00" stroke-width="3.8" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          스킬 나눔
+        </h2>
+        <p class="section-sub">수업에서 쓰는 스킬은 그대로 나눠 드립니다. 압축은 풀지 말고, 클로드에 ZIP 파일을 그대로 업로드하세요.</p>
+        <div class="skill-grid">
+
+          <article class="skill-card card-lift">
+            <svg class="doodle" viewBox="0 0 56 56" fill="none" aria-hidden="true" style="color: var(--ink)">
+              <path d="M18.5 8.3c7.9-.7 15.6-.6 23.4.2 1.8.2 3 1.4 3.1 3.2.5 8.3.4 16.4-.3 24.6-.1 1.7-1.4 2.9-3.1 3-7.7.5-15.3.4-23-.2-1.8-.1-3-1.4-3.1-3.2-.5-8.1-.4-16.1.1-24.3.1-1.8 1.2-3.1 2.9-3.3Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M12.5 15.5c-1.6.4-2.6 1.5-2.7 3.2-.5 8.1-.4 16 .2 24.1.1 1.8 1.4 3 3.2 3.2 7.5.6 14.9.7 22.4.2" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
+              <path d="M22 17.8c5.2-.3 10.3-.2 15.5.2M22 24c4.1-.2 8.1-.1 12.2.2M22 30.2c5 0 9.9.1 14.9.3" stroke="#FF6A00" stroke-width="2.6" stroke-linecap="round"/>
+            </svg>
+            <h3>카드뉴스 스킬</h3>
+            <p class="code">news-carousel</p>
+            <p class="desc">최신 뉴스를 교차 검증해 큐레이션하고, 인스타그램 카드뉴스 세트로 만들어 주는 스킬. 예약 작업과 묶으면 매일 아침 자동으로 도착합니다.</p>
+            <a href="https://github.com/Sunwoo-choi-1/aisunwoo_cardnews/releases/latest/download/news-carousel-source.zip" class="btn-ink">ZIP 다운로드</a>
+          </article>
+
+          <article class="skill-card card-lift">
+            <svg class="doodle" viewBox="0 0 56 56" fill="none" aria-hidden="true" style="color: var(--ink)">
+              <path d="M7.5 25.3c13.7-6.6 27.5-12 41.8-16.5-2.6 13.2-6.2 25.6-11 37.8-3.5-5-7-9.4-11.2-13.6-6.7-2.9-13-5.1-19.6-7.7Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M27 33.2 48.6 9.5M27.2 33.4c-.8 4-1.2 7.5-1.3 11.3 2.1-2.7 4-5 6.4-7.3" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <h3>트렌드 뉴스레터 스킬</h3>
+            <p class="code">trend-newsletter</p>
+            <p class="desc">이름, 직업, 얻고 싶은 것만 적으면 내게 맞는 트렌드 브리핑을 만들어 Gmail로 보내 주는 스킬. 디자인은 3종 중에서 고를 수 있습니다.</p>
+            <a href="https://github.com/Sunwoo-choi-1/MY-trend-newsletter/releases/latest/download/trend-newsletter.zip" class="btn-ink">ZIP 다운로드</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 연락처: 흑감귤 브라운 밴드 -->
+    <section id="contact" class="contact">
+      <div class="inner">
+        <h2 class="section-title">
+          <svg viewBox="0 0 40 40" fill="none" aria-hidden="true" style="width:2rem;height:2rem">
+            <path d="M20 6.5c.4 3.1.6 4.7 1.4 6.2.9 1.5 2.2 2.4 4.9 3.9-2.8 1.3-4.1 2.2-5 3.8-.8 1.5-1 3.1-1.3 6.1-.5-3-.8-4.6-1.7-6.1-.9-1.5-2.1-2.4-4.7-3.8 2.7-1.4 3.9-2.3 4.8-3.9.8-1.5 1.1-3.1 1.6-6.2Z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+            <path d="M32.5 25.3c.2 1.6.4 2.5.8 3.3.5.8 1.1 1.3 2.5 2.1-1.5.7-2.1 1.2-2.6 2-.4.8-.6 1.6-.8 3.2-.3-1.6-.5-2.4-1-3.2-.4-.8-1.1-1.3-2.4-2 1.4-.8 2-1.3 2.5-2.1.4-.8.7-1.7 1-3.3Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          </svg>
+          연락처
+        </h2>
+        <p class="section-sub">강의 문의도, 협업 제안도 환영합니다. 편한 곳으로 연락 주세요.</p>
+        <div class="contact-grid">
+
+          <button type="button" id="copy-email" class="contact-tile">
+            <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
+              <path d="M8.8 16.4c.2-2 1.5-3.3 3.6-3.4 10.5-.6 20.9-.5 31.4.2 2 .1 3.3 1.4 3.4 3.4.4 7 .3 13.9-.2 20.9-.1 2-1.5 3.3-3.5 3.4-10.3.5-20.5.4-30.8-.2-2-.1-3.3-1.5-3.5-3.5-.5-6.9-.4-13.8-.4-20.8Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M10.5 17.5c5.9 4.6 11.6 8.9 17.6 13.1 6-4.4 11.7-8.9 17.3-13.5" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span>
+              <span class="kind">이메일 · 누르면 복사</span>
+              <span class="value" id="copy-email-label">ai.sunwoo.lab@gmail.com</span>
+            </span>
+          </button>
+
+          <a href="https://www.instagram.com/sunwoolab.ai/" target="_blank" rel="noreferrer" class="contact-tile">
+            <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
+              <path d="M10.2 17.2c.2-3.5 2.3-5.8 5.8-6 8-.6 16-.6 24 0 3.5.2 5.6 2.5 5.8 6 .4 7.3.4 14.5 0 21.8-.2 3.5-2.3 5.7-5.8 5.9-8 .5-16 .5-24 0-3.5-.2-5.6-2.4-5.8-5.9-.4-7.3-.4-14.5 0-21.8Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M28 19.2c5-.2 9 3.6 9.1 8.6.1 5-3.8 9-8.8 9.1-5 .1-9.1-3.8-9.2-8.8-.1-4.9 3.9-8.7 8.9-8.9Z" stroke="currentColor" stroke-width="2.6"/>
+              <circle cx="40.5" cy="17.5" r="2.2" fill="currentColor"/>
+            </svg>
+            <span>
+              <span class="kind">인스타그램</span>
+              <span class="value">@sunwoolab.ai</span>
+            </span>
+          </a>
+
+          <a href="https://www.threads.com/@sunwoolab.ai" target="_blank" rel="noreferrer" class="contact-tile">
+            <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
+              <path d="M28 9.5c11.6-.4 19.9 6.6 20.2 16.2.3 9.7-7.8 17.2-19.3 17.6-2.5.1-4.9-.2-7.1-.8-3.1 1.9-6.4 3.3-10.1 4.3 1.1-3 1.9-5.7 2.5-8.6-3.6-3-5.7-7.2-5.8-12C8.2 16.8 16.4 9.9 28 9.5Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+              <circle cx="20" cy="26" r="1.9" fill="currentColor"/>
+              <circle cx="28.5" cy="26" r="1.9" fill="currentColor"/>
+              <circle cx="37" cy="26" r="1.9" fill="currentColor"/>
+            </svg>
+            <span>
+              <span class="kind">스레드</span>
+              <span class="value">@sunwoolab.ai</span>
+            </span>
+          </a>
+
+          <a href="https://www.youtube.com/@Ai로다했서누" target="_blank" rel="noreferrer" class="contact-tile">
+            <svg viewBox="0 0 56 56" fill="none" aria-hidden="true">
+              <path d="M9.3 20.1c.3-4 2.7-6.6 6.7-6.9 8-.7 16-.7 24 0 4 .3 6.4 2.9 6.7 6.9.4 5.2.4 10.4 0 15.6-.3 4-2.7 6.6-6.7 6.9-8 .7-16 .7-24 0-4-.3-6.4-2.9-6.7-6.9-.4-5.2-.4-10.4 0-15.6Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
+              <path d="M24 20.5c3.9 2.3 7.3 4.7 10.7 7.5-3.4 2.8-6.8 5.2-10.6 7.4-.4-5-.4-9.9-.1-14.9Z" stroke="#FF6A00" stroke-width="2.8" stroke-linejoin="round"/>
+            </svg>
+            <span>
+              <span class="kind">유튜브</span>
+              <span class="value">AI로 다했서누</span>
+            </span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p class="outro">오늘도 다했서누. 다음에 봬요</p>
+    <p class="copyright">© 2026 서누랩 seonulab · AI로 다했서누</p>
+  </footer>
+
+  <script>
+    (function () {
+      var EMAIL = "ai.sunwoo.lab@gmail.com";
+      var GMAIL = "https://mail.google.com/mail/?view=cm&fs=1&to=" + EMAIL;
+      var btn = document.getElementById("copy-email");
+      var label = document.getElementById("copy-email-label");
+      var timer = null;
+      btn.addEventListener("click", function () {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(EMAIL).then(function () {
+            label.textContent = "복사 완료!";
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(function () { label.textContent = EMAIL; }, 1800);
+          }).catch(function () {
+            window.open(GMAIL, "_blank", "noreferrer");
+          });
+        } else {
+          window.open(GMAIL, "_blank", "noreferrer");
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
