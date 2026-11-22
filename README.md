@@ -7,6 +7,7 @@
 - `index.html` — 페이지 전체 (HTML + CSS + 이메일 복사 스크립트)
 - `assets/banner-lockup.png` — 히어로 배너 (유튜브 배너 크롭)
 - `assets/profile.jpg` — 프로필 사진 (파비콘 겸용)
+- `downloads/sangsepage-skill-set.zip` — 상세페이지 스킬 세트 (노션 3강 첨부와 같은 파일)
 
 ## Vercel 배포
 
