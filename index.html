@@ -211,6 +211,8 @@
     .skill-card h3 { margin-top: 1.25rem; font-size: 1.25rem; font-weight: 800; }
     .skill-card .code { margin-top: 0.25rem; font-size: 0.875rem; font-weight: 700; color: rgba(30, 17, 8, 0.5); }
     .skill-card .desc { margin-top: 0.75rem; flex: 1; line-height: 1.625; color: rgba(30, 17, 8, 0.75); }
+    .skill-card h3 .maker { margin-left: 0.375rem; font-size: 0.8125rem; font-weight: 700; color: #FF6A00; white-space: nowrap; }
+    .skill-note { margin-top: 0.75rem; font-size: 0.8125rem; line-height: 1.6; color: rgba(30, 17, 8, 0.55); word-break: keep-all; }
 
     /* 카드 리프트 */
     .card-lift { transition: transform 0.25s ease, box-shadow 0.25s ease; }
@@ -454,6 +456,7 @@
           스킬 나눔
         </h2>
         <p class="section-sub">수업에서 쓰는 스킬은 그대로 나눠 드립니다. 카드뉴스·뉴스레터 스킬은 압축을 풀지 말고 클로드에 ZIP 파일을 그대로 업로드하세요.</p>
+        <p class="skill-note">아래 스킬은 모두 서누가 만들었습니다. 2차 가공해 상업적 용도로 배포하는 것은 안 되며, 공유할 때는 출처(AI로다했서누 · 서누)를 남겨 주세요.</p>
         <div class="skill-grid">
 
           <article class="skill-card card-lift">
@@ -462,7 +465,7 @@
               <path d="M12.5 15.5c-1.6.4-2.6 1.5-2.7 3.2-.5 8.1-.4 16 .2 24.1.1 1.8 1.4 3 3.2 3.2 7.5.6 14.9.7 22.4.2" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
               <path d="M22 17.8c5.2-.3 10.3-.2 15.5.2M22 24c4.1-.2 8.1-.1 12.2.2M22 30.2c5 0 9.9.1 14.9.3" stroke="#FF6A00" stroke-width="2.6" stroke-linecap="round"/>
             </svg>
-            <h3>카드뉴스 스킬</h3>
+            <h3>카드뉴스 스킬<span class="maker">(서누 만듦)</span></h3>
             <p class="code">news-carousel</p>
             <p class="desc">최신 뉴스를 교차 검증해 큐레이션하고, 인스타그램 카드뉴스 세트로 만들어 주는 스킬. 예약 작업과 묶으면 매일 아침 자동으로 도착합니다.</p>
             <a href="https://github.com/Sunwoo-choi-1/aisunwoo_cardnews/releases/latest/download/news-carousel-source.zip" class="btn-ink">ZIP 다운로드</a>
@@ -473,7 +476,7 @@
               <path d="M7.5 25.3c13.7-6.6 27.5-12 41.8-16.5-2.6 13.2-6.2 25.6-11 37.8-3.5-5-7-9.4-11.2-13.6-6.7-2.9-13-5.1-19.6-7.7Z" stroke="currentColor" stroke-width="2.6" stroke-linejoin="round"/>
               <path d="M27 33.2 48.6 9.5M27.2 33.4c-.8 4-1.2 7.5-1.3 11.3 2.1-2.7 4-5 6.4-7.3" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
-            <h3>트렌드 뉴스레터 스킬</h3>
+            <h3>트렌드 뉴스레터 스킬<span class="maker">(서누 만듦)</span></h3>
             <p class="code">trend-newsletter</p>
             <p class="desc">이름, 직업, 얻고 싶은 것만 적으면 내게 맞는 트렌드 브리핑을 만들어 Gmail로 보내 주는 스킬. 디자인은 3종 중에서 고를 수 있습니다.</p>
             <a href="https://github.com/Sunwoo-choi-1/MY-trend-newsletter/releases/latest/download/trend-newsletter.zip" class="btn-ink">ZIP 다운로드</a>
@@ -485,9 +488,9 @@
               <path d="M34.5 12.8c2.6 1.9 4.9 4 7.3 6.6M14.2 34.6c2.4 1.8 4.5 3.7 6.6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/>
               <path d="M8 49.5c3.5-.9 6.9-.9 10.6-.2" stroke="#FF6A00" stroke-width="2.8" stroke-linecap="round"/>
             </svg>
-            <h3>상세페이지 스킬</h3>
+            <h3>상세페이지 스킬<span class="maker">(서누 만듦)</span></h3>
             <p class="code">selling-product-page</p>
-            <p class="desc">상품·사진·자랑할 점만 답하면 잘 팔리는 구조로 문구·이미지·HTML을 짜고, 스마트스토어·쿠팡 규격 JPG까지 뽑아 주는 스킬. 템플릿 4종, 카테고리 15개. Claude Code·Codex용이라 압축을 풀어 스킬 폴더에 넣습니다(설치법은 강의 자료에).</p>
+            <p class="desc">상품·사진·자랑할 점만 답하면 잘 팔리는 구조로 문구·이미지·HTML을 짜고, 스마트스토어·쿠팡 규격 JPG까지 뽑아 주는 스킬. 템플릿 4종, 카테고리 15개. Claude Code·Codex용이라 압축을 풀어 스킬 폴더에 넣습니다(설치법은 강의 자료에). 함께 든 impeccable은 원작자 라이선스(Apache 2.0)를 따릅니다.</p>
             <a href="/downloads/sangsepage-skill-set.zip" download class="btn-ink">ZIP 다운로드</a>
           </article>
 
