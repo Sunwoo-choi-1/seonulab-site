@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="ko" style="color-scheme: light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>6강 프롬프트 피라미드 4줄 | AI로 다했서누 자료실</title>
+  <meta name="description" content="'써 줘' 대신 원하는 결과부터 말하는 법. 빈칸만 채우면 되는 복붙 프롬프트 4줄(한국어·영어). 클로드·챗GPT 둘 다 돼요." />
+  <meta property="og:title" content="6강 프롬프트 피라미드 4줄 | AI로 다했서누" />
+  <meta property="og:description" content="'써 줘' 대신 원하는 결과부터 말하는 법. 빈칸만 채우면 되는 복붙 프롬프트 4줄." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://sunwoo-site.vercel.app/class/6/" />
+  <meta property="og:image" content="https://sunwoo-site.vercel.app/assets/banner-lockup.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="/assets/profile.jpg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="stylesheet" href="/assets/class.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="/" class="logo">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M24 3.8c11.2-.5 20.1 8.9 20.3 20C44.5 35 35.6 44.1 24.2 44.4 12.8 44.7 3.9 35.4 3.7 24.3 3.5 13.2 12.9 4.3 24 3.8Z" fill="#1E1108"/>
+          <path d="M15 25.2c2.4 2.5 4.4 5.2 6 8 3.1-6.6 7.2-12.2 12.3-17.1" fill="none" stroke="#FF6A00" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>AI로 다했서누</span>
+      </a>
+      <nav class="site-nav">
+        <a href="/#about" class="link-draw">소개</a>
+        <a href="/#lectures" class="link-draw">강의</a>
+        <a href="/#skills" class="link-draw">스킬</a>
+        <a href="/class/" class="link-draw on">자료실</a>
+        <a href="/#contact" class="link-draw">연락처</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="lesson-bar">
+    <div class="wrap">
+      <nav class="toc" aria-label="6강 목차">
+        <a href="#why">왜 필요한가</a>
+        <a href="#steps">4단계</a>
+        <a href="#prompt">복붙 프롬프트</a>
+        <a href="#example">채워 본 예시</a>
+        <a href="#tips">쓰는 팁</a>
+      </nav>
+      <div class="act">
+        <button type="button" class="act-btn" data-copy-main><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><rect x="6.5" y="6.5" width="10" height="10" rx="2" stroke="currentColor" stroke-width="2"/><path d="M13.5 4.5v-.5a1.5 1.5 0 0 0-1.5-1.5H4a1.5 1.5 0 0 0-1.5 1.5v8A1.5 1.5 0 0 0 4 13.5h.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>프롬프트 복사하기</span></button>
+      </div>
+    </div>
+  </div>
+
+  <main class="page">
+    <p class="crumb"><a href="/class/">자료실</a> › 6강</p>
+    <div class="lesson-head">
+      <span class="lecture-num">06</span>
+    </div>
+    <h1 class="lesson-title">프롬프트 피라미드 <span class="hl-pen">4줄</span></h1>
+
+    <div class="lede">
+      <b>"써 줘" 대신 원하는 결과부터 말하는 법</b>이에요. 4줄 프롬프트에 빈칸만 채워 한 메시지로 보내면,
+      AI가 방법부터 찾고 → 나한테 묻고 → 그다음에 만들어요. <b>클로드·챗GPT 둘 다 돼요.</b>
+    </div>
+
+    <h2 id="why">왜 필요한가</h2>
+    <p>
+      대부분은 "제목 쓰고, 장점 3개 쓰고, 가격 넣고…"처럼 할 일을 줄줄이 늘어놔요.
+      그러면 AI는 그 순서 안에서만 움직여서 어디서 본 듯한 글이 나와요.
+      AI 잘 쓰는 사람들은 정반대예요. <b>지시 대신 원하는 결과부터 말해요.</b>
+    </p>
+    <table class="compare">
+      <thead><tr><th></th><th>할 일을 줄줄이</th><th>결과부터</th></tr></thead>
+      <tbody>
+        <tr><td>첫마디</td><td>"제목 쓰고, 장점 3개 쓰고…"</td><td class="good">"예약 늘어나는 가게 인스타 글이 필요해"</td></tr>
+        <tr><td>나오는 글</td><td>어디서 본 듯한 글</td><td class="good">내가 고른 방법과 내 답으로 만든 글</td></tr>
+      </tbody>
+    </table>
+
+    <h2 id="steps">프롬프트 피라미드 4단계</h2>
+    <p>가게 사장님이 <b>"예약 늘어나는 가게 인스타 글"</b>을 맡기는 상황으로 볼게요. <span class="note">(릴스에 나온 가상 가게 예시예요.)</span></p>
+    <div class="pyramid" aria-hidden="true">
+      <div class="tier">① 목표</div>
+      <div class="tier">② 조사</div>
+      <div class="tier">③ 인터뷰</div>
+      <div class="tier">④ 예시</div>
+    </div>
+    <ol class="steps">
+      <li>
+        <span class="n"><i>1</i>목표</span>
+        <p class="what">단계 말고 완성된 모습부터. 누가 보고, 보고 나서 뭘 하게 만들고 싶은지만 말해요.</p>
+        <p class="ex">"예약 늘어나는 가게 인스타 글이 필요해."</p>
+      </li>
+      <li>
+        <span class="n"><i>2</i>조사</span>
+        <p class="what">만들기 전에 방법 2~3개를 비교하고 하나를 추천하게 해요.</p>
+        <p class="ex">A 고민→해결→후기 / <b>B 결과물부터 보여 주기 (AI 추천)</b> / C 자주 묻는 질문 중심 → "B로 할게!"</p>
+      </li>
+      <li>
+        <span class="n"><i>3</i>인터뷰</span>
+        <p class="what">내가 뭘 원하는지 AI가 알 때까지 하나씩 묻게 해요.</p>
+        <p class="ex">"누가 보는 글이에요?" → "동네 30대 직장인" / "어떤 느낌이 좋아요?" → "따뜻하고 짧게"</p>
+      </li>
+      <li>
+        <span class="n"><i>4</i>예시</span>
+        <p class="what">"감성 있게" 같은 말 대신 <b>진짜 잘된 예시 하나</b>를 붙여 넣어요. AI가 그 기준을 알아요.</p>
+        <p class="ex">마음에 들었던 게시글을 그대로 붙여 넣기</p>
+      </li>
+    </ol>
+
+    <h2 id="prompt">복붙 프롬프트 4줄</h2>
+    <p>통째로 복사해서 <b>[ ] 빈칸만</b> 채운 다음, <b>한 메시지로</b> 붙여 넣으세요. 빈칸은 1번 목표, 4번 예시·좋은 이유 세 곳뿐이에요.</p>
+    <div class="prompt" data-prompt>
+      <div class="prompt-bar">
+        <div class="tabs" role="tablist">
+          <button type="button" role="tab" aria-selected="true" data-tab="ko">한국어</button>
+          <button type="button" role="tab" aria-selected="false" data-tab="en">English</button>
+        </div>
+        <button type="button" class="copy" data-copy>복사하기</button>
+      </div>
+<pre data-pane="ko">[프롬프트 피라미드]
+
+1. 목표: <span class="blank">[완성된 결과물이 어떤 모습인지. 누가 보고, 보고 나서 뭘 하게 만들고 싶은지]</span>
+
+2. 조사: 시작하기 전에 이걸 가장 잘 해내는 방법을 2~3개 찾아서 비교하고 하나를 추천해 줘. 내가 고르기 전에는 만들지 마.
+
+3. 인터뷰: 만들기 전에 내가 진짜 원하는 걸 알 때까지 나한테 질문해 줘. 한 번에 하나씩, 고를 수 있는 보기 2~3개를 같이 줘. 질문은 5개까지만.
+
+4. 예시: 잘된 결과물은 이거야: <span class="blank">[진짜 예시 붙여 넣기]</span>
+이게 좋은 이유: <span class="blank">[한 줄]</span></pre>
+<pre data-pane="en" hidden>[Prompt Pyramid]
+
+1. Goal: <span class="blank">[Describe the finished result. Who will see it, and what do you want them to do after seeing it?]</span>
+
+2. Research: Before you start, find 2–3 of the best ways to do this, compare them, and recommend one. Don't build anything until I choose.
+
+3. Interview: Before you build it, ask me questions until you understand what I really want. One question at a time, with 2–3 options I can pick from. Five questions max.
+
+4. Good looks like: Here's a great example: <span class="blank">[paste one real example]</span>
+Why it's good: <span class="blank">[one line]</span>
+
+Please reply in Korean.</pre>
+    </div>
+
+    <h2 id="example">채워 본 예시 (가게 인스타 글)</h2>
+    <div class="prompt" data-prompt>
+      <div class="prompt-bar">
+        <span class="prompt-label">빈칸을 채운 완성본</span>
+        <button type="button" class="copy" data-copy>복사하기</button>
+      </div>
+<pre data-pane="ko">[프롬프트 피라미드]
+
+1. 목표: 예약 늘어나는 가게 인스타 글. 동네 30대 직장인이 보고, 주말 2인 세트를 예약하게 만들고 싶어.
+
+2. 조사: 시작하기 전에 이걸 가장 잘 해내는 방법을 2~3개 찾아서 비교하고 하나를 추천해 줘. 내가 고르기 전에는 만들지 마.
+
+3. 인터뷰: 만들기 전에 내가 진짜 원하는 걸 알 때까지 나한테 질문해 줘. 한 번에 하나씩, 고를 수 있는 보기 2~3개를 같이 줘. 질문은 5개까지만.
+
+4. 예시: 잘된 결과물은 이거야: <span class="blank">[마음에 들었던 게시글을 그대로 붙여 넣기]</span>
+이게 좋은 이유: 따뜻하고 짧아서, 사진 한 장이랑 두세 줄만 봐도 뭘 예약하면 되는지 알 수 있어.</pre>
+    </div>
+    <p>4번에는 <b>내가 실제로 좋다고 본 게시글</b>(내 가게 글이든 다른 가게 글이든)을 그대로 붙여 넣어요.</p>
+
+    <h2 id="tips">쓰는 팁</h2>
+    <ul class="tips">
+      <li><b>빈칸이 다 안 떠오르면 비워 두고 보내도 돼요.</b> AI가 질문하면서 채워 줘요.</li>
+      <li>질문 없이 바로 만들어 버리면 → <span class="say">만들기 전에 3번대로 질문부터 해 줘</span></li>
+      <li>답하기 어려운 질문은 → <span class="say">추천해 줘</span> / 마음에 드는 방법이 없으면 → <span class="say">다른 방법도 찾아 줘</span></li>
+      <li>1번 목표와 4번 예시만 바꾸면 상세페이지, 이벤트 안내문, 채용 공고에도 그대로 써요.</li>
+    </ul>
+
+    <p class="source">
+      출처: 프롬프트 피라미드(Prompt Pyramid)는 해외 크리에이터 @cooper.simson이
+      <a href="https://www.instagram.com/reels/DfYQTMpPLa0/" target="_blank" rel="noreferrer" class="link-draw">릴스</a>에서 소개한 틀이에요.
+      한국어로 옮기고 서누가 실무에서 쓰는 방식으로 다듬었어요.
+    </p>
+
+    <div class="next">
+      <a href="/class/" class="btn-ink-outline">← 자료실 목록</a>
+      <a href="https://www.instagram.com/sunwoolab.ai/" target="_blank" rel="noreferrer" class="btn-tang">@sunwoolab.ai 팔로우</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p class="outro">오늘도 다했서누. 다음에 봬요</p>
+    <p class="copyright">© 2026 서누랩 seonulab · AI로 다했서누</p>
+  </footer>
+
+  <script>
+    (function () {
+      document.querySelectorAll("[data-prompt]").forEach(function (box) {
+        var tabs = box.querySelectorAll("[data-tab]");
+        var panes = box.querySelectorAll("[data-pane]");
+        var copyBtn = box.querySelector("[data-copy]");
+        var timer = null;
+        tabs.forEach(function (t) {
+          t.addEventListener("click", function () {
+            tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+            panes.forEach(function (p) { p.hidden = p.getAttribute("data-pane") !== t.getAttribute("data-tab"); });
+          });
+        });
+        copyBtn.addEventListener("click", function () {
+          var pane = Array.prototype.find.call(panes, function (p) { return !p.hidden; });
+          var text = pane.textContent.replace(/\r\n/g, "\n");
+          var done = function () {
+            copyBtn.textContent = "복사 완료!";
+            copyBtn.classList.add("done");
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(function () { copyBtn.textContent = "복사하기"; copyBtn.classList.remove("done"); }, 1800);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done).catch(function () { fallback(text); done(); });
+          } else { fallback(text); done(); }
+        });
+      });
+      // 상단 바: 프롬프트 바로 복사 (지금 보고 있는 언어 탭 기준)
+      var mainBtn = document.querySelector("[data-copy-main]");
+      var firstBox = document.querySelector("[data-prompt]");
+      var mainTimer = null;
+      mainBtn.addEventListener("click", function () {
+        var pane = Array.prototype.find.call(firstBox.querySelectorAll("[data-pane]"), function (p) { return !p.hidden; });
+        var text = pane.textContent.replace(/\r\n/g, "\n");
+        var label = mainBtn.querySelector("span");
+        var done = function () {
+          label.textContent = "복사 완료!"; mainBtn.classList.add("done");
+          if (mainTimer) clearTimeout(mainTimer);
+          mainTimer = setTimeout(function () { label.textContent = "프롬프트 복사하기"; mainBtn.classList.remove("done"); }, 1800);
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(done).catch(function () { fallback(text); done(); });
+        } else { fallback(text); done(); }
+      });
+      // 상단 바: 지금 읽는 구역 표시
+      var links = document.querySelectorAll(".lesson-bar .toc a");
+      var heads = Array.prototype.map.call(links, function (a) { return document.querySelector(a.getAttribute("href")); });
+      function spy() {
+        var y = window.scrollY + 160, cur = -1;
+        heads.forEach(function (h, i) { if (h && h.offsetTop <= y) cur = i; });
+        links.forEach(function (a, i) { a.classList.toggle("on", i === cur); });
+        if (cur >= 0) { var a = links[cur]; var toc = a.parentNode; if (a.offsetLeft < toc.scrollLeft || a.offsetLeft + a.offsetWidth > toc.scrollLeft + toc.clientWidth) toc.scrollLeft = a.offsetLeft - 8; }
+      }
+      window.addEventListener("scroll", spy, {passive: true}); spy();
+      function fallback(text) {
+        var ta = document.createElement("textarea");
+        ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+    })();
+  </script>
+</body>
+</html>

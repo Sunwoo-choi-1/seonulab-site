@@ -4,6 +4,7 @@
     { "source": "/class2", "destination": "https://www.notion.so/3f15c835dac68173acc7cf3e72590af5", "permanent": false },
     { "source": "/class3", "destination": "https://www.notion.so/40c5c835dac680f5a55ef998e5d2dff1", "permanent": false },
     { "source": "/class4", "destination": "https://app.notion.com/p/yourpageclub/4-effects-4215c835dac681f9af0fd39f9adac997", "permanent": false },
-    { "source": "/class5", "destination": "https://app.notion.com/p/yourpageclub/5-4235c835dac681188940c90b1943df64", "permanent": false }
+    { "source": "/class5", "destination": "https://app.notion.com/p/yourpageclub/5-4235c835dac681188940c90b1943df64", "permanent": false },
+    { "source": "/class6", "destination": "/class/6/", "permanent": false }
   ]
 }
