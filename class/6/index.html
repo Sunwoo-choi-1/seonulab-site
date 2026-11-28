@@ -9,8 +9,9 @@
   <meta property="og:description" content="'써 줘' 대신 원하는 결과부터 말하는 법. 빈칸만 채우면 되는 복붙 프롬프트 4줄." />
   <meta property="og:type" content="article" />
   <meta property="og:url" content="https://sunwoo-site.vercel.app/class/6/" />
-  <meta property="og:image" content="https://sunwoo-site.vercel.app/assets/banner-lockup.png" />
+  <meta property="og:image" content="https://sunwoo-site.vercel.app/assets/og-image.png" />
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://sunwoo-site.vercel.app/assets/og-image.png" />
   <link rel="icon" href="/assets/profile.jpg" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
   <link rel="stylesheet" href="/assets/class.css" />
@@ -246,7 +247,11 @@ Please reply in Korean.</pre>
         var y = window.scrollY + 160, cur = -1;
         heads.forEach(function (h, i) { if (h && h.offsetTop <= y) cur = i; });
         links.forEach(function (a, i) { a.classList.toggle("on", i === cur); });
-        if (cur >= 0) { var a = links[cur]; var toc = a.parentNode; if (a.offsetLeft < toc.scrollLeft || a.offsetLeft + a.offsetWidth > toc.scrollLeft + toc.clientWidth) toc.scrollLeft = a.offsetLeft - 8; }
+        var toc = document.querySelector(".lesson-bar .toc");
+        if (cur < 0) { toc.scrollLeft = 0; return; }
+        var r = links[cur].getBoundingClientRect(), tr = toc.getBoundingClientRect();
+        if (r.left < tr.left) toc.scrollLeft += r.left - tr.left - 8;
+        else if (r.right > tr.right) toc.scrollLeft += r.right - tr.right + 8;
       }
       window.addEventListener("scroll", spy, {passive: true}); spy();
       function fallback(text) {

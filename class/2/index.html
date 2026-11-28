@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="ko" style="color-scheme: light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2강 트렌드 뉴스레터 자동화 | AI로 다했서누 자료실</title>
+  <meta name="description" content="스킬 넣고, Gmail 연결하고, 예약만 걸어두면 컴퓨터가 꺼져 있어도 매일 아침 메일함에 도착해요. 트렌드 뉴스레터 셋업 가이드 7단계와 지시문 템플릿." />
+  <meta property="og:title" content="2강 트렌드 뉴스레터 자동화 | AI로 다했서누" />
+  <meta property="og:description" content="스킬 넣고, Gmail 연결하고, 예약만 걸어두면 컴퓨터가 꺼져 있어도 매일 아침 메일함에 도착해요." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://sunwoo-site.vercel.app/class/2/" />
+  <meta property="og:image" content="https://sunwoo-site.vercel.app/assets/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="https://sunwoo-site.vercel.app/assets/og-image.png" />
+  <link rel="icon" href="/assets/profile.jpg" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css" />
+  <link rel="stylesheet" href="/assets/class.css" />
+  <style>
+    /* 2강 전용: 슬라이드 이미지 틀, 토글, 긴 주소 줄바꿈 */
+    .shot { display: block; margin-top: 1.25rem; border: 2px solid var(--ink); border-radius: 16px; overflow: hidden; background: #fff; }
+    .shot img { width: 100%; }
+    .lede a { word-break: break-all; font-weight: 700; }
+    .lede .zip { display: block; margin-top: 0.5rem; }
+    .toggle { margin-top: 1.25rem; border: 2px solid var(--ink); border-radius: 20px; background: #fff; }
+    .toggle > summary { cursor: pointer; padding: 1rem 1.25rem; font-weight: 800; list-style: none; display: flex; align-items: center; gap: 0.5rem; }
+    .toggle > summary::-webkit-details-marker { display: none; }
+    .toggle > summary::before { content: "▸"; color: var(--tangerine); transition: transform 0.15s ease; }
+    .toggle[open] > summary::before { transform: rotate(90deg); }
+    .toggle .prompt { margin: 0 1rem 1rem; }
+    .prompt-bar { flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="/" class="logo">
+        <svg viewBox="0 0 48 48" aria-hidden="true">
+          <path d="M24 3.8c11.2-.5 20.1 8.9 20.3 20C44.5 35 35.6 44.1 24.2 44.4 12.8 44.7 3.9 35.4 3.7 24.3 3.5 13.2 12.9 4.3 24 3.8Z" fill="#1E1108"/>
+          <path d="M15 25.2c2.4 2.5 4.4 5.2 6 8 3.1-6.6 7.2-12.2 12.3-17.1" fill="none" stroke="#FF6A00" stroke-width="4.2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>AI로 다했서누</span>
+      </a>
+      <nav class="site-nav">
+        <a href="/#about" class="link-draw">소개</a>
+        <a href="/#lectures" class="link-draw">강의</a>
+        <a href="/#skills" class="link-draw">스킬</a>
+        <a href="/class/" class="link-draw on">자료실</a>
+        <a href="/#contact" class="link-draw">연락처</a>
+      </nav>
+      <details class="mnav">
+        <summary aria-label="메뉴 열기"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>메뉴</summary>
+        <nav class="mnav-panel">
+          <a href="/#about">소개</a>
+          <a href="/#lectures">강의</a>
+          <a href="/#skills">스킬</a>
+          <a href="/class/" class="on">자료실</a>
+          <a href="/#contact">연락처</a>
+        </nav>
+      </details>
+    </div>
+  </header>
+
+  <div class="lesson-bar">
+    <div class="wrap">
+      <nav class="toc" aria-label="2강 목차">
+        <a href="#prep">준비물</a>
+        <a href="#step1">1 스킬 넣기</a>
+        <a href="#step2">2 Gmail 연결</a>
+        <a href="#step3">3 지시문</a>
+        <a href="#step4">4 예약 작업</a>
+        <a href="#step5">5 모델·시간·권한</a>
+        <a href="#step6">6 컴퓨터 필요 끄기</a>
+        <a href="#step7">7 테스트</a>
+        <a href="#designs">디자인 3가지</a>
+        <a href="#faq">막혔을 때</a>
+      </nav>
+      <div class="act">
+        <a class="act-btn" href="https://github.com/Sunwoo-choi-1/MY-trend-newsletter/releases/latest/download/trend-newsletter.zip" target="_blank" rel="noreferrer"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M10 3v9.5M6 9l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M3.5 13.5v1.5A1.5 1.5 0 0 0 5 16.5h10a1.5 1.5 0 0 0 1.5-1.5v-1.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>스킬 다운로드</span></a>
+      </div>
+    </div>
+  </div>
+
+  <main class="page">
+    <p class="crumb"><a href="/class/">자료실</a> › 2강</p>
+    <div class="lesson-head">
+      <span class="lecture-num">02</span>
+    </div>
+    <h1 class="lesson-title">트렌드 뉴스레터 <span class="hl-pen">자동화</span></h1>
+
+    <div class="lede">
+      <b>트렌드 뉴스레터 스킬 ZIP 파일 다운로드 링크입니다 👇🏼</b> (압축 풀지 말고 그대로 업로드하세요)
+      <a class="zip link-draw" href="https://github.com/Sunwoo-choi-1/MY-trend-newsletter/releases/latest/download/trend-newsletter.zip" target="_blank" rel="noreferrer">https://github.com/Sunwoo-choi-1/MY-trend-newsletter/releases/latest/download/trend-newsletter.zip</a>
+    </div>
+    <p class="note">모바일에서 이미지가 잘 보이지 않으면 이미지를 꾹 눌러서 저장해서 보세요!</p>
+
+    <a class="shot" href="/assets/class/2/newsletter-cover.png" target="_blank" rel="noreferrer">
+      <img src="/assets/class/2/newsletter-cover.png" alt="셋업 가이드 표지. 매일 아침, 트렌드 뉴스레터 자동으로 받아보기. 컴퓨터 꺼도 되는 7단계: 1 스킬 넣기, 2 Gmail 연결, 3 지시문 쓰기, 4 예약 걸기(STEP 4~7). 스킬 넣고, Gmail 연결하고, 예약만 걸어두면 컴퓨터가 꺼져 있어도 매일 아침 메일함에 도착해요." width="1600" height="1093" loading="lazy" />
+    </a>
+
+    <h2 id="prep">준비물</h2>
+    <a class="shot" href="/assets/class/2/newsletter-prep.png" target="_blank" rel="noreferrer">
+      <img src="/assets/class/2/newsletter-prep.png" alt="시작 전에 이것만 준비해요: Claude 유료 요금제, trend-newsletter 스킬 ZIP(AI로다했서누 제공), 뉴스레터 받을 Gmail 계정. 1강과 다르게 작업 폴더도, API 키도 필요 없어요. 클로드 웹에서 전부 끝나요." width="1600" height="1013" loading="lazy" />
+    </a>
+
+    <h2 id="step1">STEP 1 · 스킬 넣기</h2>
+    <a class="shot" href="/assets/class/2/newsletter-step1.png" target="_blank" rel="noreferrer">
+      <img src="/assets/class/2/newsletter-step1.png" alt="STEP 01 스킬 넣기. 설정 › 사용자 지정 › 스킬 업로드. 받은 trend-newsletter.zip을 압축 풀지 말고 그대로 올려요. 주의: 압축을 풀었다가 다시 묶으면 'SKILL.md must be in the top-level folder' 에러가 나요. 업로드 후 trend-newsletter가 켜져 있는지 확인." width="1600" height="1013" loading="lazy" />
+    </a>
+
+    <h2 id="step2">STEP 2 · Gmail 연결하기</h2>
+    <a class="shot" href="/assets/class/2/newsletter-step2.png" target="_blank" rel="noreferrer">
+      <img src="/assets/class/2/newsletter-step2.png" alt="STEP 02 Gmail 연결하기. 설정 › 커넥터 › Gmail 연결. 뉴스레터를 내 메일함으로 보내주는 통로예요. 구글 계정으로 로그인하고 권한을 허용하면 끝. TIP: 뉴스레터를 받을 계정과 같은 구글 계정으로 연결하면 헷갈리지 않아요. '연결됨'이 보이면 성공." width="1600" height="1013" loading="lazy" />
+    </a>
+
+    <h2 id="step3">STEP 3 · 지시문 쓰기</h2>
+    <a class="shot" href="/assets/class/2/newsletter-step3.png" target="_blank" rel="noreferrer">
+      <img src="/assets/class/2/newsletter-step3.png" alt="STEP 03 지시문 쓰기. 오른쪽 틀을 복사해서 내 정보로만 바꿔요. 제일 중요한 건 뉴스레터로 얻고 싶은 것. 키워드 말고 뭘 하고 싶은지 문장으로 써요. 세모: 카페, 디저트, 제주. 동그라미: 다음 달 신메뉴를 정하고 싶어. 요즘 뜨는 디저트랑 관광객이 카페 고르는 기준이 궁금해. 주의: 첫 줄은 지우지 마세요. Gmail 주소가 없으면 안전을 위해 메일을 보내지 않아요. 직업은 일이 아니어도 돼요. 예) 육아 중인 엄마, 투자 공부하는 직장인." width="1600" height="1013" loading="lazy" />
+    </a>
+
+    <div class="lede">
+      📋 <b>지시문 템플릿</b> · 복사해서 내 정보로만 바꾸세요. 첫 줄은 지우지 마세요! 디자인은 <b>basic</b> · <b>dark</b> · <b>trendy</b> 중 1개를 골라 적어주세요.
+    </div>
+    <div class="prompt" data-prompt>
+      <div class="prompt-bar">
+        <span class="prompt-label">지시문 템플릿</span>
+        <button type="button" class="copy" data-copy>복사하기</button>
+      </div>
+<pre data-pane="tpl">trend-newsletter 스킬을 사용해서 오늘의 트렌드 뉴스레터를 만들고, 아래 설정대로 Gmail로 보내줘.
+디자인: basic
+이름: 
+직업: 
+뉴스레터로 얻고 싶은 것: 
+Gmail 주소: </pre>
+    </div>
+
+    <details class="toggle">
+      <summary>예시 지시문 3개 보기 (카페 사장 / 마케터 / 육아)</summary>
+      <div class="prompt" data-prompt>
+        <div class="prompt-bar">
+          <div class="tabs" role="tablist">
+            <button type="button" role="tab" aria-selected="true" data-tab="cafe">카페 사장</button>
+            <button type="button" role="tab" aria-selected="false" data-tab="mkt">마케터</button>
+            <button type="button" role="tab" aria-selected="false" data-tab="kid">육아</button>
+          </div>
+          <button type="button" class="copy" data-copy>복사하기</button>
+        </div>
+<pre data-pane="cafe">trend-newsletter 스킬을 사용해서 오늘의 트렌드 뉴스레터를 만들고, 아래 설정대로 Gmail로 보내줘.
+디자인: basic
+이름: 지민
+직업: 제주에서 카페 운영
+뉴스레터로 얻고 싶은 것: 다음 달 신메뉴로 뭘 낼지 정하고 싶어. 요즘 뜨는 디저트와 음료, 관광객이 카페를 고르는 기준이 어떻게 바뀌는지 알고 싶어.
+Gmail 주소: 내메일@gmail.com</pre>
+<pre data-pane="mkt" hidden>trend-newsletter 스킬을 사용해서 오늘의 트렌드 뉴스레터를 만들고, 아래 설정대로 Gmail로 보내줘.
+디자인: dark
+이름: 수진
+직업: 인하우스 퍼포먼스 마케터
+뉴스레터로 얻고 싶은 것: 이번 주 광고 소재 아이디어. 메타·유튜브 광고의 새 기능, 반응 좋은 숏폼 광고 포맷, 실무에 바로 쓸 AI 마케팅 툴 소식.
+Gmail 주소: 내메일@gmail.com</pre>
+<pre data-pane="kid" hidden>trend-newsletter 스킬을 사용해서 오늘의 트렌드 뉴스레터를 만들고, 아래 설정대로 Gmail로 보내줘.
+디자인: basic
+이름: 하나
+직업: 5살 아이 키우는 엄마
+뉴스레터로 얻고 싶은 것: 주말에 아이랑 뭐 하고 놀지 고르고 싶어. 요즘 부모들이 많이 가는 키즈 체험, 인기 놀이와 교구, 새로 생긴 육아 지원 소식.
+Gmail 주소: 내메일@gmail.com</pre>
+      </div>
+    </details>
+
+    <h2 id="step4">STEP 4 · 예약 작업 만들기</h2>
+    <a class="shot" href="/assets/class/2/newsletter-step4.png" target="_blank" rel="noreferrer">
+      <img src="/assets/class/2/newsletter-step4.png" alt="STEP 04 예약 작업 만들기. 사이드바 › 예정됨 › 새로 만들기. 이름은 알아보기 쉽게 '뉴스레터'. 지침 칸에 STEP 03에서 쓴 지시문을 통째로 붙여넣어요." width="1600" height="1013" loading="lazy" />
+    </a>
+
+    <h2 id="step5">STEP 5 · 모델·시간·권한 설정</h2>
+    <a class="shot" href="/assets/class/2/newsletter-step5.png" target="_blank" rel="noreferrer">
+      <img src="/assets/class/2/newsletter-step5.png" alt="STEP 05 모델·시간·권한 설정. 모델은 Opus로 골라요. 제일 성능 좋은 모델이에요. 빈도는 매일, 시간은 받고 싶은 때로(예: 매일 아침 7시). 권한은 꼭 자동 승인으로 바꿔요. 주의: 자동 승인이 아니면 Claude가 내 승인을 기다리다 멈춰서 아침에 메일이 안 와요." width="1600" height="1013" loading="lazy" />
+    </a>
+
+    <h2 id="step6">STEP 6 · '이 컴퓨터 필요' 끄기</h2>
+    <a class="shot" href="/assets/class/2/newsletter-step6.png" target="_blank" rel="noreferrer">
+      <img src="/assets/class/2/newsletter-step6.png" alt="STEP 06 '이 컴퓨터 필요' 끄기. 이게 컴퓨터 꺼도 오는 비밀이에요. 꺼두면 클라우드에서 실행돼서, 노트북을 덮고 자도 메일이 와요. OFF 확인 후 저장. 참고: 고급 설정의 푸시 알림·이메일은 '작업 끝났어요' 한 줄 요약이에요. 뉴스레터는 Gmail로 따로 와요. 켜둬도, 꺼둬도 괜찮아요. 1강 카드뉴스는 내 폴더를 써서 켜야 했지만, 뉴스레터는 꺼도 돼요." width="1600" height="1013" loading="lazy" />
+    </a>
+
+    <h2 id="step7">STEP 7 · 지금 실행으로 테스트</h2>
+    <a class="shot" href="/assets/class/2/newsletter-step7.png" target="_blank" rel="noreferrer">
+      <img src="/assets/class/2/newsletter-step7.png" alt="STEP 07 지금 실행으로 테스트. 내일 아침까지 기다리지 말고 지금 실행을 눌러 한 번 받아봐요. 몇 분 뒤 메일함을 확인하면 돼요. TIP: 메일이 안 오면 작업의 실행 기록을 열어 어디서 멈췄는지 확인해요." width="1600" height="1013" loading="lazy" />
+    </a>
+
+    <h2 id="designs">디자인은 3가지 중에 골라요</h2>
+    <a class="shot" href="/assets/class/2/newsletter-designs.png" target="_blank" rel="noreferrer">
+      <img src="/assets/class/2/newsletter-designs.png" alt="BONUS 디자인은 3가지 중에 골라요: 베이직(basic), 다크(dark), 트렌디(trendy). 지시문의 디자인: 한 줄만 바꾸면 돼요. 스킬은 다시 올릴 필요 없어요. 일부 메일 앱은 dark 디자인 색을 바꿔서 보여줄 수 있어요." width="1600" height="1013" loading="lazy" />
+    </a>
+
+    <h2 id="faq">막혔을 때 확인하세요</h2>
+    <a class="shot" href="/assets/class/2/newsletter-faq.png" target="_blank" rel="noreferrer">
+      <img src="/assets/class/2/newsletter-faq.png" alt="끝! 내일 아침, 메일함을 열어보세요. 막혔을 때 확인하세요. Q 메일이 안 와요(STEP 05·07): 권한이 자동 승인인지, 지시문에 Gmail 주소가 있는지 보고 실행 기록을 열어보세요. Q 딥다이브가 없는 날이 있어요(정상): 출처가 확실한 자료가 없으면 일부러 빼요. 지어낸 내용을 넣지 않으려고요. Q 관심사를 바꾸고 싶어요(STEP 04): 예정됨에서 작업을 열고 지시문만 고치면 돼요." width="1600" height="1013" loading="lazy" />
+    </a>
+
+    <div class="next">
+      <a href="/class/" class="btn-ink-outline">← 자료실 목록</a>
+      <a href="https://www.instagram.com/sunwoolab.ai/" target="_blank" rel="noreferrer" class="btn-tang">@sunwoolab.ai 팔로우</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <p class="outro">오늘도 다했서누. 다음에 봬요</p>
+    <p class="copyright">© 2026 서누랩 seonulab · AI로 다했서누</p>
+  </footer>
+
+  <script>
+    (function () {
+      document.querySelectorAll("[data-prompt]").forEach(function (box) {
+        var tabs = box.querySelectorAll("[data-tab]");
+        var panes = box.querySelectorAll("[data-pane]");
+        var copyBtn = box.querySelector("[data-copy]");
+        var timer = null;
+        tabs.forEach(function (t) {
+          t.addEventListener("click", function () {
+            tabs.forEach(function (x) { x.setAttribute("aria-selected", x === t ? "true" : "false"); });
+            panes.forEach(function (p) { p.hidden = p.getAttribute("data-pane") !== t.getAttribute("data-tab"); });
+          });
+        });
+        copyBtn.addEventListener("click", function () {
+          var pane = Array.prototype.find.call(panes, function (p) { return !p.hidden; });
+          var text = pane.textContent.replace(/\r\n/g, "\n");
+          var done = function () {
+            copyBtn.textContent = "복사 완료!";
+            copyBtn.classList.add("done");
+            if (timer) clearTimeout(timer);
+            timer = setTimeout(function () { copyBtn.textContent = "복사하기"; copyBtn.classList.remove("done"); }, 1800);
+          };
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(done).catch(function () { fallback(text); done(); });
+          } else { fallback(text); done(); }
+        });
+      });
+      // 상단 바: 지금 읽는 구역 표시
+      var links = document.querySelectorAll(".lesson-bar .toc a");
+      var heads = Array.prototype.map.call(links, function (a) { return document.querySelector(a.getAttribute("href")); });
+      function spy() {
+        var y = window.scrollY + 160, cur = -1;
+        heads.forEach(function (h, i) { if (h && h.offsetTop <= y) cur = i; });
+        links.forEach(function (a, i) { a.classList.toggle("on", i === cur); });
+        var toc = document.querySelector(".lesson-bar .toc");
+        if (cur < 0) { toc.scrollLeft = 0; return; }
+        var r = links[cur].getBoundingClientRect(), tr = toc.getBoundingClientRect();
+        if (r.left < tr.left) toc.scrollLeft += r.left - tr.left - 8;
+        else if (r.right > tr.right) toc.scrollLeft += r.right - tr.right + 8;
+      }
+      window.addEventListener("scroll", spy, {passive: true}); spy();
+      function fallback(text) {
+        var ta = document.createElement("textarea");
+        ta.value = text; ta.style.position = "fixed"; ta.style.opacity = "0";
+        document.body.appendChild(ta); ta.select();
+        try { document.execCommand("copy"); } catch (e) {}
+        document.body.removeChild(ta);
+      }
+    })();
+  </script>
+  <script>
+    // 휴대폰 메뉴: 항목을 누르거나 바깥을 누르면 닫기
+    (function () {
+      var m = document.querySelector(".mnav");
+      if (!m) return;
+      m.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { m.removeAttribute("open"); }); });
+      document.addEventListener("click", function (e) { if (m.open && !m.contains(e.target)) m.removeAttribute("open"); });
+    })();
+  </script>
+</body>
+</html>
