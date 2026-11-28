@@ -40,6 +40,33 @@ button { font: inherit; color: inherit; background: none; border: none; cursor: 
 .site-nav { display: none; align-items: center; gap: 1.75rem; font-size: 0.875rem; font-weight: 700; }
 .site-nav .on { background-size: 100% 2.5px; }
 @media (min-width: 640px) { .site-nav { display: flex; } }
+
+    /* 휴대폰 메뉴: 640px 아래에서만 보이는 '메뉴' 버튼 + 펼침 목록 */
+    .mnav { display: block; }
+    @media (min-width: 640px) { .mnav { display: none; } }
+    .mnav summary {
+      list-style: none; cursor: pointer; user-select: none;
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.5rem 0.875rem; border: 2px solid var(--ink); border-radius: 999px;
+      font-size: 0.875rem; font-weight: 800; line-height: 1;
+    }
+    .mnav summary::-webkit-details-marker { display: none; }
+    .mnav summary svg { width: 1.125rem; height: 1.125rem; }
+    .mnav[open] summary { background: var(--ink); color: var(--cream); }
+    .mnav-panel {
+      position: absolute; left: 0; right: 0; top: 100%;
+      display: flex; flex-direction: column;
+      background: var(--cream); padding: 0.25rem 1.25rem 0.75rem;
+      border-bottom: 2px solid rgba(30, 17, 8, 0.12);
+      box-shadow: 0 12px 24px -12px rgba(30, 17, 8, 0.25);
+    }
+    .mnav-panel a {
+      padding: 0.875rem 0.25rem; text-decoration: none;
+      font-size: 1.0625rem; font-weight: 800;
+      border-bottom: 1px solid rgba(30, 17, 8, 0.08);
+    }
+    .mnav-panel a:last-child { border-bottom: none; }
+    .mnav-panel a.on { color: var(--tangerine); }
 .link-draw {
   text-decoration: none;
   background-image: linear-gradient(var(--tangerine), var(--tangerine));

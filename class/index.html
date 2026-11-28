@@ -32,6 +32,16 @@
         <a href="/class/" class="link-draw on">자료실</a>
         <a href="/#contact" class="link-draw">연락처</a>
       </nav>
+      <details class="mnav">
+        <summary aria-label="메뉴 열기"><svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M3 5.5h14M3 10h14M3 14.5h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>메뉴</summary>
+        <nav class="mnav-panel">
+          <a href="/#about">소개</a>
+          <a href="/#lectures">강의</a>
+          <a href="/#skills">스킬</a>
+          <a href="/class/" class="on">자료실</a>
+          <a href="/#contact">연락처</a>
+        </nav>
+      </details>
     </div>
   </header>
 
@@ -95,5 +105,14 @@
     <p class="outro">오늘도 다했서누. 다음에 봬요</p>
     <p class="copyright">© 2026 서누랩 seonulab · AI로 다했서누</p>
   </footer>
+  <script>
+    // 휴대폰 메뉴: 항목을 누르거나 바깥을 누르면 닫기
+    (function () {
+      var m = document.querySelector(".mnav");
+      if (!m) return;
+      m.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", function () { m.removeAttribute("open"); }); });
+      document.addEventListener("click", function (e) { if (m.open && !m.contains(e.target)) m.removeAttribute("open"); });
+    })();
+  </script>
 </body>
 </html>
